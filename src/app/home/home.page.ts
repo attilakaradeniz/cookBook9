@@ -15,6 +15,8 @@ export class HomePage  {
 
   newItem: Item = <Item>{};
 
+  public howMany:number;
+
  // @ViewChild('myList')myList: IonList;
 
  public isSearchbarOpened = false;
@@ -22,6 +24,7 @@ export class HomePage  {
   constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController, public navCtrl: NavController) {
     this.plt.ready().then(() => {
       this.loadItems();
+      this.showHowMany();
     });
   }
 
@@ -44,7 +47,9 @@ export class HomePage  {
     loadItems() {
       this.storageService.getItems().then(items => {
         this.items = items;
+        this.showHowMany();
       });
+      //this.showHowMany();
     }
 
 
@@ -59,6 +64,7 @@ export class HomePage  {
       this.showToast('YUMMMPDATED!');
       // this.myList.closeSlidingItems();
       this.loadItems();
+      this.showHowMany();
     });
   }
 
@@ -74,8 +80,15 @@ export class HomePage  {
 
   onSearch(event) {
     console.log(event.target.value) 
-    this.showToastLong('REALLY! \nCant you see...\nIm eating right now...\ncant search your ' + event.target.value);
+    this.showToastLong('Sorry! \nI ate your ' + event.target.value);
 
+  }
+
+  // shows how many entries on storage
+  showHowMany() {
+      console.log('test', Storage.length);
+      console.log('this.items.lenght', this.items.length);
+      this.howMany = this.items.length;
   }
 
 

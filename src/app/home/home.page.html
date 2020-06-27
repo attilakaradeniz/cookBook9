@@ -39,29 +39,29 @@
     </ion-fab>
 
   <ion-item>
- 
-    <ion-label position="fixed"><ion-icon name="pizza-outline" class="ion-text-capitalize"></ion-icon>Food</ion-label>
-    <ion-input placeholder="Name eat!" [(ngModel)]="newItem.title"></ion-input>
+    <ion-label position="fixed" color="danger"><ion-icon name="pizza-outline" class="ion-text-capitalize"></ion-icon> Food</ion-label>
+    <ion-input [(ngModel)]="newItem.title" placeholder="Name Eat!"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed"><ion-icon name="add-circle-outline"></ion-icon>Ingredients</ion-label>
-    <ion-input [(ngModel)]="newItem.ingredients" placeholder="Count eat!"></ion-input>
-  </ion-item>  <ion-item>
-
-    <ion-label position="fixed"><ion-icon name="alarm-outline"></ion-icon>Instructions</ion-label>
-    <ion-input [(ngModel)]="newItem.instructions" placeholder="Tell me!"></ion-input>
+    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon name="add-circle-outline"></ion-icon> Ingredients</ion-label>
+    <ion-input [(ngModel)]="newItem.ingredients" placeholder="Count Eat!"></ion-input>
+  </ion-item>  
+  
+  <ion-item>
+    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon name="alarm-outline"></ion-icon> Instructions</ion-label>
+    <ion-input [(ngModel)]="newItem.instructions" placeholder="Tell mEat!"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label position="fixed"><ion-icon name="pulse-outline"></ion-icon>Nutrition Facts</ion-label>
-    <ion-input [(ngModel)]="newItem.nutFacts" placeholder="whatever..."></ion-input>
+    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon name="pulse-outline"></ion-icon> Nutrition Facts</ion-label>
+    <ion-input [(ngModel)]="newItem.nutFacts" placeholder="whatever...Eat!"></ion-input>
   </ion-item>  
 
 
 
   <ion-button expand="block" (click)="addItem()" color="danger">
-    <ion-icon name="pizza-outline"></ion-icon>FEED ME<ion-icon name="rocket-outline"></ion-icon>
+    <ion-icon name="pizza-outline"></ion-icon> &nbsp; FEED ME &nbsp; <ion-icon name="rocket-outline"></ion-icon>
   </ion-button>
 
   <ion-list #myList>
@@ -69,7 +69,7 @@
     <ion-list-header>
       <ion-label>
         <ion-text color="danger">
-          <h1><ion-icon name="pizza-outline"></ion-icon>My preciousss<ion-badge color="warning">55</ion-badge></h1>
+          <h1><ion-icon name="pizza-outline" color="warningtertiary"></ion-icon>my preciousnesses<ion-badge (click)="showHowMany()" color="warning">{{howMany}}</ion-badge></h1>
 
         </ion-text>
       </ion-label>
@@ -79,12 +79,19 @@
 
       <ion-item>
         <ion-label class="ion-text-capitalize" text-wrap>
-            <h2> {{ item.title }} </h2>
+            <div class="title">{{ item.title }}</div>
+
+            <p>ingredients: </p>
+            <div class="ingredientsSummary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.ingredients}}</div>
+
+            <p>instructions:</p>
             <ion-text class="ion-text-wrap ion-text-justify" color="dark">
-              <p>{{ item.instructions }}</p>
+              <p class="instructions">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.instructions }}<br></p>
             </ion-text>
-            <ion-text color="secondary">
-              <p>{{ item.nutFacts }}</p>
+
+            <p>Nutrition Facts</p>
+            <ion-text>
+              <p class="nut">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.nutFacts }}</p>
             </ion-text>
             <p>{{ item.modified | date:'short'}}</p>
         </ion-label>

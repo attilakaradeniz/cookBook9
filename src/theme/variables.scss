@@ -230,3 +230,28 @@
 .mainContent{
   --ion-background-color: #ecdbdbdc;
 }
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+  color: #5a5b5f;
+}
+
+.instructions {
+  font-style: italic;
+  color: #5a5b5f;
+}
+
+.ingredientsSummary {
+  font-size: 9px;
+  color: red;
+}
+
+.fourTitels {
+  width: 300px!important;
+}
+
+.nut {
+  font-family: tahoma;
+  color: #7883b1;
+}
