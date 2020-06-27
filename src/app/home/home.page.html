@@ -1,10 +1,30 @@
-<ion-header color="">
-  <ion-toolbar color="dark">
-    <ion-title>
-      <ion-icon name="logo-electron"></ion-icon>
-      cookBook9
-
+<ion-header color="" class="ion-align-self-center">
+  <ion-toolbar color="medium">
+    <ion-title class="ion-align-self-center" *ngIf="!isSearchbarOpened">
+     
+      
+      <ion-text>
+      <p class="ion-text-center">
+        <ion-icon name="logo-electron"></ion-icon> cookBook9
+      </p>
+    </ion-text>
     </ion-title>
+
+
+    <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (search)="onSearch($event)" (ionCancel)="isSearchbarOpened=false" expand="full" color="warning"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+        <ion-icon name="search-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+
+
+
+
+
+
   </ion-toolbar>
 </ion-header>
 
@@ -20,7 +40,7 @@
 
   <ion-item>
  
-    <ion-label position="fixed"><ion-icon name="pizza-outline"></ion-icon>Food</ion-label>
+    <ion-label position="fixed"><ion-icon name="pizza-outline" class="ion-text-capitalize"></ion-icon>Food</ion-label>
     <ion-input placeholder="Name eat!" [(ngModel)]="newItem.title"></ion-input>
   </ion-item>
 
@@ -38,17 +58,17 @@
     <ion-input [(ngModel)]="newItem.nutFacts" placeholder="whatever..."></ion-input>
   </ion-item>  
 
-  <ion-searchbar expand="full" color="warning"></ion-searchbar>
+
 
   <ion-button expand="block" (click)="addItem()" color="danger">
-    <ion-icon name="pizza-outline"></ion-icon>FEED ME!<ion-icon name="rocket-outline"></ion-icon>
+    <ion-icon name="pizza-outline"></ion-icon>FEED ME<ion-icon name="rocket-outline"></ion-icon>
   </ion-button>
 
   <ion-list #myList>
 
     <ion-list-header>
       <ion-label>
-        <ion-text color="secondary">
+        <ion-text color="danger">
           <h1><ion-icon name="pizza-outline"></ion-icon>My preciousss<ion-badge color="warning">55</ion-badge></h1>
 
         </ion-text>
@@ -58,9 +78,9 @@
     <ion-item-sliding *ngFor="let item of items">
 
       <ion-item>
-        <ion-label text-wrap>
+        <ion-label class="ion-text-capitalize" text-wrap>
             <h2> {{ item.title }} </h2>
-            <ion-text color="danger">
+            <ion-text class="ion-text-wrap ion-text-justify" color="dark">
               <p>{{ item.instructions }}</p>
             </ion-text>
             <ion-text color="secondary">

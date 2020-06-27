@@ -1,6 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { StorageService, Item } from '../services/storage.service';
-import { Platform, ToastController } from '@ionic/angular';
+import { Platform, ToastController, NavController } from '@ionic/angular';
+
 //import { IonList } from '@ionic/angular';
 
 @Component({
@@ -16,7 +17,9 @@ export class HomePage  {
 
  // @ViewChild('myList')myList: IonList;
 
-  constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController) {
+ public isSearchbarOpened = false;
+
+  constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController, public navCtrl: NavController) {
     this.plt.ready().then(() => {
       this.loadItems();
     });
@@ -68,11 +71,19 @@ export class HomePage  {
     });
   }
 
+
+  onSearch(event) {
+    console.log(event.target.value) 
+    this.showToastLong('REALLY! \nCant you see...\nIm eating right now...\ncant search your ' + event.target.value);
+
+  }
+
+
   // helper
   async showToast(msg) {
     const toast = await this.toastController.create({
       message: msg,
-      duration: 2000,
+      duration: 3000,
       // cssClass: 'toast-bg',
       buttons: [
        {
@@ -80,7 +91,27 @@ export class HomePage  {
          
        }
       ],
-      color: 'dark'
+      color: 'warning'
+      
+    });
+    toast.present();
+  }
+
+
+  async showToastLong(msg) {
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: msg,
+      duration: 4000,
+      // cssClass: 'toast-bg',
+      buttons: [
+       {
+         icon:'body',
+         
+         
+       }
+      ],
+      color: 'warning'
       
     });
     toast.present();
