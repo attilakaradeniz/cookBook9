@@ -1,6 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { StorageService, Item } from '../services/storage.service';
 import { Platform, ToastController, NavController } from '@ionic/angular';
+import { Router, NavigationExtras } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 //import { IonList } from '@ionic/angular';
 
@@ -15,18 +17,65 @@ export class HomePage  {
 
   newItem: Item = <Item>{};
 
+  detailItem: Item = <Item>{};
+  detailObject: {} = {};
+
+  storageArray: [] = [];
+  detailArray: [] = [];
+
+  
+
   public howMany:number;
 
- // @ViewChild('myList')myList: IonList;
+  //@ViewChild('myList')myList: IonList;
 
  public isSearchbarOpened = false;
 
-  constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController, public navCtrl: NavController) {
+  constructor(private storageService: StorageService, private plt: Platform, private toastController: ToastController, public navCtrl: NavController, private router: Router, public storage: Storage) {
     this.plt.ready().then(() => {
       this.loadItems();
+
       this.showHowMany();
+
+      //this.howMany = this.items.length;
+      //this.howMany = this.items.length;
+      console.log('items---> ', this.items);
+      console.log('newItem--->', this.newItem);
+      console.log('this.detailItem---> ', this.detailItem);
+      console.log('this.detailObject---> ', JSON.stringify(this.detailObject));
+      console.log('this.storageService.getItems()---> ', this.storageService.getItems());
+      console.log('this.storageService.getStorageLength---> ', this.storageService.getStorageLength());
+
+      // this.storageService.storage.get('food-items').then((val) => {
+      //   console.log('val: ', val);
+      // });
+
+      // this.storageService.storage.get('food-items').then((val) => {
+      //     this.storageArray = val;  
+      // });
     });
   }
+//-------------------------------------------- TEST FUNCTIONS --------------------------------//
+  // getStorageLength() {
+  //   console.log('this.storageService.storage.get.name------> ', this.storageService.storage.get.name);
+  // }
+
+
+
+//-------------------------------------------- TEST FUNCTIONS --------------------------------//
+
+ionViewWillEnter() {
+  this.loadItems();
+
+  this.showHowMany();
+}
+
+consoleLogitems(){
+  console.log('items-----> ', this.items);
+}
+
+
+
 
   // create
   addItem() {
@@ -37,10 +86,12 @@ export class HomePage  {
       this.newItem = <Item>{};
       this.showToast('Yummed joyfully');
       this.loadItems();
-      console.log('newItem: ', this.newItem);
-      console.log('items', this.items);
+      console.log('newItem------> ', this.newItem);
+      console.log('items------>', this.items);
 
     });
+    // update how many items 
+    //this.showHowMany();
   }
 
     // read
@@ -64,7 +115,7 @@ export class HomePage  {
       this.showToast('YUMMMPDATED!');
       // this.myList.closeSlidingItems();
       this.loadItems();
-      this.showHowMany();
+      //this.showHowMany();
     });
   }
 
@@ -72,9 +123,13 @@ export class HomePage  {
   deleteItem(item: Item) {
     this.storageService.deleteItem(item.id).then(item => {
       this.showToast('wish I ate that :(');
-      // this.myList.closeSlidingItems();
+       //this.myList.closeSlidingItems();
       this.loadItems();
     });
+    // update howmany items 
+    this.showHowMany();
+    console.log('Storage.length: ', Storage.length);
+    console.log('this.items.lenght: ', this.items.length);
   }
 
 
@@ -86,9 +141,35 @@ export class HomePage  {
 
   // shows how many entries on storage
   showHowMany() {
-      console.log('test', Storage.length);
-      console.log('this.items.lenght', this.items.length);
+      console.log('Storage.length: ', Storage.length);
+      console.log('this.items.lenght: ', this.items.length);
       this.howMany = this.items.length;
+  }
+
+  // navigates to datails page
+  openDetails(item: Item) {
+    //debugger
+      console.log('item---------------------------------------------------------------------------->', item);
+    //this.storageService.detail(item.id).then(item => {
+          //this.detailItem = item;
+          //this.loadItems();
+          //this.detailObject = item;
+          //this.detailArray =
+      this.detailItem = item;
+      this.storage.set('details', this.detailItem);
+        //this.storage.set('details', item[0] );
+    //});
+    // let navigationExtras: NavigationExtras = {
+    //   queryParams: {
+    //      special: 'whatever'
+    //    //special: JSON.stringify(this.detailObject)
+    //   }
+
+    // }
+    // this.router.navigate(['details'], navigationExtras);
+    this.router.navigate(['details']);
+    
+
   }
 
 

@@ -39,37 +39,53 @@
     </ion-fab>
 
   <ion-item>
-    <ion-label position="fixed" color="danger"><ion-icon name="pizza-outline" class="ion-text-capitalize"></ion-icon> Food</ion-label>
-    <ion-input [(ngModel)]="newItem.title" placeholder="Name Eat!"></ion-input>
+    <ion-label position="fixed" color="danger"><ion-icon color="warning" name="pizza-outline" class="ion-text-capitalize"></ion-icon>Food</ion-label>
+    <ion-input color="light" [(ngModel)]="newItem.title" placeholder="Name Eat!"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon name="add-circle-outline"></ion-icon> Ingredients</ion-label>
-    <ion-input [(ngModel)]="newItem.ingredients" placeholder="Count Eat!"></ion-input>
+    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon color="warning" name="add-circle-outline"></ion-icon> Ingredients</ion-label>
+    <ion-input color="light"  [(ngModel)]="newItem.ingredients" placeholder="Count Eat!"></ion-input>
   </ion-item>  
   
   <ion-item>
-    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon name="alarm-outline"></ion-icon> Instructions</ion-label>
-    <ion-input [(ngModel)]="newItem.instructions" placeholder="Tell mEat!"></ion-input>
+    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon color="warning" name="alarm-outline"></ion-icon>Instructions</ion-label>
+    <ion-input color="light"  [(ngModel)]="newItem.instructions" placeholder="Tell mEat!"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon name="pulse-outline"></ion-icon> Nutrition Facts</ion-label>
-    <ion-input [(ngModel)]="newItem.nutFacts" placeholder="whatever...Eat!"></ion-input>
+    <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon color="warning" name="pulse-outline"></ion-icon>Nutrition</ion-label>
+    <ion-input color="light"  [(ngModel)]="newItem.nutFacts" placeholder="Whatever...Eat!"></ion-input>
   </ion-item>  
 
 
 
-  <ion-button expand="block" (click)="addItem()" color="danger">
+  <ion-button  expand="block" (click)="addItem()" color="danger">
     <ion-icon name="pizza-outline"></ion-icon> &nbsp; FEED ME &nbsp; <ion-icon name="rocket-outline"></ion-icon>
   </ion-button>
+<!-- 
+  <ion-button expand="block" (click)="showHowMany()" color="danger">
+   SHOW HOW MANY()
+    </ion-button>
+  
+    <ion-button expand="block" (click)="loadItems()" color="danger">
+       load Items() 
+      </ion-button>
 
-  <ion-list #myList>
+      
+        <ion-button expand="block" (click)="consoleLogitems()" color="danger">
+          console log this.items
+          </ion-button> -->
+        
+
+            
+                                            <ion-list #myList>
 
     <ion-list-header>
       <ion-label>
         <ion-text color="danger">
-          <h1><ion-icon name="pizza-outline" color="warningtertiary"></ion-icon>my preciousnesses<ion-badge (click)="showHowMany()" color="warning">{{howMany}}</ion-badge></h1>
+          <!-- <h1><ion-icon name="pizza-outline" color="warningtertiary"></ion-icon>my preciousnesses<ion-badge color="warning">&gt; {{howMany}} &lt;</ion-badge></h1> -->
+          <h1><ion-icon name="pizza-outline" color="warningtertiary"></ion-icon>my preciousnesses <ion-badge color="warning">{{howMany}}</ion-badge></h1>
 
         </ion-text>
       </ion-label>
@@ -78,10 +94,10 @@
     <ion-item-sliding *ngFor="let item of items">
 
       <ion-item>
-        <ion-label class="ion-text-capitalize" text-wrap>
-            <div class="title">{{ item.title }}</div>
+        <ion-label class="ion-text-capitalize subTitles" text-wrap>
+            <div class="title">{{ item.title }} <ion-badge (click)="openDetails(item)">Details</ion-badge></div>
 
-            <p>ingredients: </p>
+            <p class="instructions">ingredients: </p>
             <div class="ingredientsSummary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.ingredients}}</div>
 
             <p>instructions:</p>

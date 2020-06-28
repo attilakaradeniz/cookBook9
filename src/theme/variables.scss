@@ -227,9 +227,52 @@
   }
 }
 
-.mainContent{
-  --ion-background-color: #ecdbdbdc;
+
+
+
+.md {
+  --ion-text-color: #ffffff;
 }
+
+// :root{
+//   color: #f4f5f8;
+// }
+
+// .inputs{
+//   color: #f4f5f8;
+// }
+
+
+
+// .cardo{
+//   color: #f4f5f8;
+  
+// }
+
+
+.mainContent{
+  // --ion-background-color: #ecdbdbd;
+  //--ion-background-color: #121212;
+  --ion-background-color: #000000;
+}
+
+.mainContentDetail {
+
+  --ion-background-color: #000000;
+  color: #ffffff;
+}
+
+.ingredientsDetail {
+  color: #ff0000;
+}
+
+.titleDetail {
+  color: #c26262;
+}
+
+
+
+
 
 .title {
   font-weight: bold;
@@ -239,7 +282,8 @@
 
 .instructions {
   font-style: italic;
-  color: #5a5b5f;
+  // color: #5a5b5f;
+  color: #ffffff;
 }
 
 .ingredientsSummary {
@@ -254,4 +298,8 @@
 .nut {
   font-family: tahoma;
   color: #7883b1;
+}
+
+.subTitles {
+  color: #0000ff;
 }

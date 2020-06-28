@@ -1,0 +1,58 @@
+<ion-header color="">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="mainContentDetail">
+
+  <ion-card *ngIf="data" class="cardo">
+      <ion-card-header>
+        <ion-card-title>
+           <p class="titleDetail"> {{data.title}} </p>
+        </ion-card-title>
+        <ion-card-subtitle>
+          <p class="ingredientsDetail"> {{data.ingredients}}</p>
+          <ion-item color="dark" *ngFor="let i of ingArray">
+            <ion-checkbox></ion-checkbox>
+           &nbsp; &nbsp; {{i}}
+          </ion-item>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-item>
+          <ion-text class="ion-text-wrap ion-text-justify" color="light">
+          <p class="instructions">{{data.instructions}}</p>
+        </ion-text>   
+        </ion-item>
+      </ion-card-content>
+  </ion-card>
+
+  <!-- <p>obarak: {{data.ingredients}}</p> -->
+
+  <!-- <ion-item>
+    <ion-label class="ion-text-capitalize" text-wrap>
+        {{ data.title }}
+
+        <p>ingredients: </p>
+        {{data.ingredients}}
+
+        <p>instructions:</p>
+        <ion-text class="ion-text-wrap ion-text-justify" color="dark">
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.instructions }}<br></p>
+        </ion-text>
+
+        <p>Nutrition Facts</p>
+        <ion-text>
+          <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data.nutFacts }}</p>
+        </ion-text>
+        <p>{{ data.modified | date:'short'}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-chip>chip</ion-chip> -->
+
+</ion-content>
