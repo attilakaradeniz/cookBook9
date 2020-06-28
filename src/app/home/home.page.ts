@@ -46,21 +46,13 @@ export class HomePage  {
       console.log('this.storageService.getItems()---> ', this.storageService.getItems());
       console.log('this.storageService.getStorageLength---> ', this.storageService.getStorageLength());
 
-      // this.storageService.storage.get('food-items').then((val) => {
-      //   console.log('val: ', val);
-      // });
 
-      // this.storageService.storage.get('food-items').then((val) => {
-      //     this.storageArray = val;  
-      // });
     });
   }
 //-------------------------------------------- TEST FUNCTIONS --------------------------------//
   // getStorageLength() {
   //   console.log('this.storageService.storage.get.name------> ', this.storageService.storage.get.name);
   // }
-
-
 
 //-------------------------------------------- TEST FUNCTIONS --------------------------------//
 
@@ -73,9 +65,6 @@ ionViewWillEnter() {
 consoleLogitems(){
   console.log('items-----> ', this.items);
 }
-
-
-
 
   // create
   addItem() {
@@ -103,12 +92,14 @@ consoleLogitems(){
       //this.showHowMany();
     }
 
-
-
-
   // update
   updateItem(item: Item) {
-    item.title = `YUMMM: ${item.title}`;
+    
+    
+    // item.title = `YUMMED: ${item.title}`;
+    item.title = `YUMMED: ${Date.now()}`;
+    
+    
     item.modified = Date.now();
 
     this.storageService.updateItem(item).then(item => {

@@ -1,7 +1,6 @@
 <ion-header color="" class="ion-align-self-center">
-  <ion-toolbar color="medium">
+  <ion-toolbar color="danger">
     <ion-title class="ion-align-self-center" *ngIf="!isSearchbarOpened">
-     
       
       <ion-text>
       <p class="ion-text-center">
@@ -10,7 +9,6 @@
     </ion-text>
     </ion-title>
 
-
     <ion-searchbar *ngIf="isSearchbarOpened" showCancelButton="true" (search)="onSearch($event)" (ionCancel)="isSearchbarOpened=false" expand="full" color="warning"></ion-searchbar>
     <ion-buttons end>
       <button ion-button icon only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
@@ -18,27 +16,18 @@
       </button>
     </ion-buttons>
 
-
-
-
-
-
-
-
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content class="mainContent">
-
     <!-- fab placed to the top end -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button>
+      <ion-fab-button  color="danger" (click)="addItem()">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
     </ion-fab>
 
-  <ion-item>
+  <ion-item class="inputs" >
     <ion-label position="fixed" color="danger"><ion-icon color="warning" name="pizza-outline" class="ion-text-capitalize"></ion-icon>Food</ion-label>
     <ion-input color="light" [(ngModel)]="newItem.title" placeholder="Name Eat!"></ion-input>
   </ion-item>
@@ -57,29 +46,12 @@
     <ion-label class="fixedLabel" position="fixed" color="danger"><ion-icon color="warning" name="pulse-outline"></ion-icon>Nutrition</ion-label>
     <ion-input color="light"  [(ngModel)]="newItem.nutFacts" placeholder="Whatever...Eat!"></ion-input>
   </ion-item>  
-
-
-
+  
   <ion-button  expand="block" (click)="addItem()" color="danger">
     <ion-icon name="pizza-outline"></ion-icon> &nbsp; FEED ME &nbsp; <ion-icon name="rocket-outline"></ion-icon>
   </ion-button>
-<!-- 
-  <ion-button expand="block" (click)="showHowMany()" color="danger">
-   SHOW HOW MANY()
-    </ion-button>
-  
-    <ion-button expand="block" (click)="loadItems()" color="danger">
-       load Items() 
-      </ion-button>
-
-      
-        <ion-button expand="block" (click)="consoleLogitems()" color="danger">
-          console log this.items
-          </ion-button> -->
-        
-
-            
-                                            <ion-list #myList>
+ 
+<ion-list #myList>
 
     <ion-list-header>
       <ion-label>
@@ -110,6 +82,9 @@
               <p class="nut">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.nutFacts }}</p>
             </ion-text>
             <p>{{ item.modified | date:'short'}}</p>
+
+
+              <br>  
         </ion-label>
       </ion-item>
 
@@ -118,9 +93,7 @@
         <ion-item-option color="danger" (click)="deleteItem(item)">OOO! TRASH</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
-
-
-
+    
   </ion-list>
 
 </ion-content>
