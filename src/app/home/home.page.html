@@ -71,11 +71,15 @@
 
             <p class="instructions">ingredients: </p>
             <div class="ingredientsSummary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{item.ingredients}}</div>
-
+            
+<ion-card> 
+  <ion-card-content>
             <p>instructions:</p>
-            <ion-text class="ion-text-wrap ion-text-justify" color="dark">
-              <p class="instructions">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.instructions }}<br></p>
+            <ion-text class="ion-text-wrap ion-text-justify" color="light">
+              <p style="font-size: 20px;" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ item.instructions }}<br></p>
             </ion-text>
+          </ion-card-content> 
+          </ion-card>
 
             <p>Nutrition Facts</p>
             <ion-text>
